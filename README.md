@@ -2,7 +2,7 @@
 
 ## Objective
 
-The Secure Raspberry Pi project aimed to install the Raspberry Pi OS Lite software on a Raspberry Pi 5 and to harden it, in the process we will learn Linux fundamentals, system hardening, authentication, and service management. Next we can use the Raspberry Pi to do network discovery and scanning with nmap, arp-scan, and netdiscover to map a home network. We can automate these tasks by running a simple script. 
+The Secure Raspberry Pi project aimed to setup a Raspberry Pi 5 and to harden it, in the process we will learn Linux fundamentals, system hardening, authentication, and service management. Next we can use the Raspberry Pi to do network discovery and scanning with nmap, arp-scan, and netdiscover to map a home network. We can automate these tasks by running a simple script. 
 
 ### Skills Learned
 
@@ -16,6 +16,9 @@ The Secure Raspberry Pi project aimed to install the Raspberry Pi OS Lite softwa
 - nmap, arp-scan and netdiscover
 
 ## Steps
+
+## Raspberry Pi Initial Setup
+
 1. Purchase a Raspberry Pi
 
 Today I received my Raspberry Pi 5 Starter Kit in the mail. The starter kit was purchased from Vilros and consists of the following:
@@ -31,9 +34,17 @@ Today I received my Raspberry Pi 5 Starter Kit in the mail. The starter kit was 
 ![IMG_0743](https://github.com/user-attachments/assets/7e5b14c8-d740-4092-aab7-d7ca5144ffec)
 *Ref 1: Vilros Raspberry Pi Starter Kit*
 
-My plan is to set up this Raspberry Pi as a headless computer, accessible only on the network. So, to set it up headless I don't need any additional peripherals and I only need to preconfigure a hostname, user account, network connection, and SSH when I install an operating system. NOTE: A Raspberry Pi will automatically boot from a microSD card when the slot contains a card. 
+My plan is to set up this Raspberry Pi as a headless computer, accessible only on the network. The kit I purchased already had Raspberry Pi OS installed on the MicroSD card. So initially, I did hook up a montior, keyboard, and mouse to the Raspberry Pi. Before inserting the power cord, I had all peripheral connected along with the microSD card. NOTE: A Raspberry Pi will automatically boot from a microSD card when the slot contains a card. 
 
-2. Install Raspberry Pi OS Lite onto my MicroSD Card
+2. Fire up the Raspberry Pi
+3. There is a wizard and I followed the steps, creating a username/ password and set up WiFi user/password.
+4. Next, you need to enable SSH. Go to preferences, naviage to Interfaces Tab, and selected Enabled next to SSH.
+5. Restart
+6. Now without using peripherals, I remoted into my pi using SSH and a password.
+7. ssh username@<IP_ADDRESS>
+
+## SSH Key-Based Authentication (In progress)
+For a more secure setup, I set up SSH keys using public-key cryptography, making them virually impassible to brute-force. Key-based authenication is less vunerable to guessing or dictionary attacks. 
 
 WORK IN PROGRESS...
 drag & drop screenshots here or use imgur and reference them using imgsrc
