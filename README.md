@@ -2,7 +2,7 @@
 
 ## Objective
 
-The Secure Raspberry Pi project aimed to setup a Raspberry Pi 5 and to harden it, in the process we will learn Linux fundamentals, system hardening, authentication, and service management. Next we can use the Raspberry Pi to do network discovery and scanning with nmap, arp-scan, and netdiscover to map a home network. We can automate these tasks by running a simple script. 
+The Secure Raspberry Pi project aimed to setup a Raspberry Pi 5 and to harden it, in the process we will learn Linux adn some Windows fundamentals, system hardening, authentication, and service management. Next we can use the Raspberry Pi to do network discovery and scanning with nmap, arp-scan, and netdiscover to map a home network. We can automate these tasks by running a simple script. 
 
 ### Skills Learned
 
@@ -34,7 +34,7 @@ Today I received my Raspberry Pi 5 Starter Kit in the mail. The starter kit was 
 ![IMG_0743](https://github.com/user-attachments/assets/7e5b14c8-d740-4092-aab7-d7ca5144ffec)
 *Ref 1: Vilros Raspberry Pi Starter Kit*
 
-My plan is to set up this Raspberry Pi as a headless computer, accessible only on the network. The kit I purchased already had Raspberry Pi OS installed on the MicroSD card. So initially, I did hook up a montior, keyboard, and mouse to the Raspberry Pi. Before inserting the power cord, I had all peripheral connected along with the microSD card. NOTE: A Raspberry Pi will automatically boot from a microSD card when the slot contains a card. 
+My plan is to set up this Raspberry Pi as a headless computer, accessible only on the network. The kit I purchased already had Raspberry Pi OS installed on the MicroSD card. So initially, I did hook up a montior, keyboard, and mouse to the Raspberry Pi. Before inserting the power cord, I had all peripherals connected along with the microSD card. NOTE: A Raspberry Pi will automatically boot from a microSD card when the slot contains a card. 
 
 2. Fire up the Raspberry Pi
 3. There is a wizard and I followed the steps, creating a username/ password and set up WiFi user/password.
@@ -50,8 +50,8 @@ For a more secure setup, I set up SSH keys using public-key cryptography, making
 1.  C:\Users\USERNAME  > dir
 2.  C:\Users\USERNAME  > cd .ssh
 3.  C:\Users\USERNAME\.ssh > dir  [Check for existing SSH public keys, I do not have any ssh keys]
-4.   > ssh-keygen [generates a new SSH key pair, use -t argument to specify the type of key and -C argument for a comment]
-     > ssh-keygen -t rsa -C "Dawn's Pi Key"
+4.   C:\Users\USERNAME  > ssh-keygen [generates a new SSH key pair, use -t argument to specify the type of key and -C argument for a comment]
+    C:\Users\USERNAME > ssh-keygen -t rsa -C "Dawn's Pi Key"
    When asked to enter file in which to save the key (FILE PATH SHOWN HERE): press Enter
    Enter passphrase (empty for no passphrase): press Enter
 5. Run the following command to check the contents of the .ssh directory
@@ -61,10 +61,11 @@ For a more secure setup, I set up SSH keys using public-key cryptography, making
    The id_rsa.pub file contains your public key. You will share this key with your Raspberry Pi. When you connect with the Raspberry Pi remotely, it will use this key to verify your identity.
   **Add the SSH key to your list of SSH identities**
    Open a Powershell Window as Administrator
-   > Start-Service ssh-agent
-   > ssh-add $env:USERPROFILE\.ssh\id_rsa
+   PS C:\WINDOWS\system32 > Start-Service ssh-agent
+   PS C:\WINDOWS\system32> ssh-add $env:USERPROFILE\.ssh\id_rsa
    Verify it is added
-   > ssh-add -l
+   PS C:\WINDOWS\system32> ssh-add -l
+    You should see a hash of your key here along with the comment "Dawn's Pi Key" 
 **Copy a public key from Windows to your Raspberry Pi**
-> type $env:USERPROFILE\.ssh\id_rsa.pub | ssh pi@<IP_ADDRESS> "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+PS C:\WINDOWS\system32> type $env:USERPROFILE\.ssh\id_rsa.pub | ssh pi@<IP_ADDRESS> "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 You can now log on to your Raspberry Pi without the need for the password and using SSH Authorization. 
