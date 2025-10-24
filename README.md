@@ -46,17 +46,25 @@ My plan is to set up this Raspberry Pi as a headless computer, accessible only o
 ## SSH Key-Based Authentication (In progress)
 For a more secure setup, I set up SSH keys using public-key cryptography, making them virually impassible to brute-force. Key-based authenication is less vunerable to guessing or dictionary attacks. You can generate different types of asymmetric algorithms, RSA, ECC, DSA just to name a few. Your choice. You need to make keys on the computer that you use to remote into the Raspberry Pi. I have a Windows computer. 
 
-
-Manually configure an SSH key on a Windows computer
+**Manually configure an SSH key on a Windows computer**
 1.  C:\Users\USERNAME  > dir
 2.  C:\Users\USERNAME  > cd .ssh
 3.  C:\Users\USERNAME\.ssh > dir  [Check for existing SSH public keys, I do not have any ssh keys]
-4.  
-WORK IN PROGRESS...
-drag & drop screenshots here or use imgur and reference them using imgsrc
-
-Every screenshot should have some text explaining what the screenshot is about.
-
-Example below.
-
-*Ref 1: Network Diagram*
+4.   > ssh-keygen [generates a new SSH key pair, use -t argument to specify the type of key and -C argument for a comment]
+     > ssh-keygen -t rsa -C "Dawn's Pi Key"
+   When asked to enter file in which to save the key (FILE PATH SHOWN HERE): press Enter
+   Enter passphrase (empty for no passphrase): press Enter
+5. Run the following command to check the contents of the .ssh directory
+   C:\Users\USERNAME\.ssh > dir
+   You should see the files id_rsa and id_rsa.pub
+   The id_rsa file contains your private key. Keep this secure on the computer you use to remotely connect to the Raspberry Pi.
+   The id_rsa.pub file contains your public key. You will share this key with your Raspberry Pi. When you connect with the Raspberry Pi remotely, it will use this key to verify your identity.
+  **Add the SSH key to your list of SSH identities**
+   Open a Powershell Window as Administrator
+   > Start-Service ssh-agent
+   > ssh-add $env:USERPROFILE\.ssh\id_rsa
+   Verify it is added
+   > ssh-add -l
+**Copy a public key from Windows to your Raspberry Pi**
+> type $env:USERPROFILE\.ssh\id_rsa.pub | ssh pi@<IP_ADDRESS> "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+You can now log on to your Raspberry Pi without the need for the password and using SSH Authorization. 
