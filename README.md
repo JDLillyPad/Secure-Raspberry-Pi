@@ -44,8 +44,14 @@ My plan is to set up this Raspberry Pi as a headless computer, accessible only o
 7. ssh username@<IP_ADDRESS>
 
 ## SSH Key-Based Authentication (In progress)
-For a more secure setup, I set up SSH keys using public-key cryptography, making them virually impassible to brute-force. Key-based authenication is less vunerable to guessing or dictionary attacks. 
+For a more secure setup, I set up SSH keys using public-key cryptography, making them virually impassible to brute-force. Key-based authenication is less vunerable to guessing or dictionary attacks. You can generate different types of asymmetric algorithms, RSA, ECC, DSA just to name a few. Your choice. You need to make keys on the computer that you use to remote into the Raspberry Pi. I have a Windows computer. 
 
+
+Manually configure an SSH key on a Windows computer
+1.  C:\Users\USERNAME  > dir
+2.  C:\Users\USERNAME  > cd .ssh
+3.  C:\Users\USERNAME\.ssh > dir  [Check for existing SSH public keys, I do not have any ssh keys]
+4.  
 WORK IN PROGRESS...
 drag & drop screenshots here or use imgur and reference them using imgsrc
 
