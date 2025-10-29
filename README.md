@@ -12,7 +12,7 @@ The Secure Raspberry Pi project aimed to setup a Raspberry Pi 5 and to harden it
 ### Tools Used
 
 - ufw & fail2ban
-- nmap, arp-scan and netdiscover (In Projess)
+- nmap, arp-scan and netdiscover (In Progress)
 
 ## Steps
 
