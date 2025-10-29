@@ -93,7 +93,7 @@ Diabling password-based SSH login prevents Brute-Force Attacks, Enforeces Key-Ba
      - Restart SSH
 
   ## Install and Configure UFW (Uncomplicated Firewall)
-  Installing UFW (Uncomplicated Firewall) is another way to secure your Raspberry Pi It simplfies firewall management by being user-friendly, you can allow/ deny traffic with simple commands, protects against unauthorized access (UFW blocks all incoming connections by default, except those you explicitly allow, which is the principle of least priviledge), it also works seamlessly with Fail2Ban. UFW sets static rules, Fail2Ban adds dynamic bans. Together they create a layered defense system (Defense in Depth). 
+  Installing UFW (Uncomplicated Firewall) is another way to secure your Raspberry Pi. It simplfies firewall management by being user-friendly, you can allow/ deny traffic with simple commands, protects against unauthorized access (UFW blocks all incoming connections by default, except those you explicitly allow, which is the principle of least priviledge), it also works seamlessly with Fail2Ban. UFW sets static rules, Fail2Ban adds dynamic bans. Together they create a layered defense system (Defense in Depth). 
   1. sudo apt update && sudo install ufw
      - Say "Y" when asked to continue
   2. sudo ufw allow 2222/tcp
@@ -107,7 +107,7 @@ Diabling password-based SSH login prevents Brute-Force Attacks, Enforeces Key-Ba
 
  ## Install and Configure Fail2Ban 
  Security Tool for Linux systems to help protect against brute-force attacks, useful for SSH, FTP and webservers
-  1. sudo apt install fail2ban
+  1. sudo apt update && sudo apt install fail2ban
   2. sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
      - Create a local jail config. Preserves custom settings: jail.config is default configuration file
      - jail.local overrides jail.conf: Fail2Ban reads both files, but jail.local takes priority
