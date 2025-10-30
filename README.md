@@ -126,7 +126,12 @@ Diabling password-based SSH login prevents Brute-Force Attacks, Enforeces Key-Ba
        - Enable it to start on boot
   8. sudo systemctl status fail2ban
        - Check the status
-      
+
+## New Login Procedure 
+Now, from the Windows computer, open up a command prompt, and use this to log into the Raspberry pi:
+ 1. C:\ ssh -p 2222 pi@<IP_ADDRESS>
+
+
    
      
    
